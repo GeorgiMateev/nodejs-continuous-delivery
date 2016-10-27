@@ -1,1 +1,3 @@
-exports.square = (x) => x * x;
+exports.square = function (x) {
+    return x * x;
+}
