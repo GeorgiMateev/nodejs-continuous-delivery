@@ -2,7 +2,7 @@ var http = require('http');
 
 var core = require('./core.js');
 
-const PORT=8080; 
+const PORT=process.env.APP_PORT; 
 
 var server = http.createServer((req, res) => res.end('Result: ' + core.square(5)));
 
