@@ -16,6 +16,7 @@ var exphbs  = require('express-handlebars');
 var app = express();
 
 app.use(express.static('public'));
+app.use(express.static('node_modules'));
 
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
