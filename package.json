@@ -12,7 +12,7 @@
   "homepage": "https://bitbucket.org/helecloud/nodejs-continuous-delivery#readme",
   "scripts": {
     "start": "tsc && concurrently \"tsc -w\" \"node server.js\" ",
-    "e2e": "tsc && concurrently \"http-server -s\" \"protractor protractor.config.js\" --kill-others --success first",
+    "e2e": "tsc && concurrently \"node server.js\" \"protractor protractor.config.js\" --kill-others --success first",
     "lint": "tslint ./public/app/**/*.ts -t verbose",
     "lite": "lite-server",
     "pree2e": "webdriver-manager update",
