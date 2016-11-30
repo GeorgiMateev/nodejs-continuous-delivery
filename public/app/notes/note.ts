@@ -6,4 +6,5 @@ export class Note {
 
     public text:string;
     public createdOn:Date;
+    public id: string;
 }

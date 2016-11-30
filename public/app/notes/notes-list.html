@@ -7,5 +7,6 @@
     </li>
 </ul>
 
-<textarea cols="30" rows="10" [(ngModel)]="newNoteText"></textarea>
-<button (click)="post()">Post</button>
+<textarea cols="30" rows="10" [(ngModel)]="newNoteText"></textarea><br>
+<button (click)="post()">Post</button><br>
+<span *ngIf="loading">Loading...</span>

@@ -1,29 +1,44 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Note } from './note';
+import {NotesService} from './notes-service';
 
 @Component({
     selector: 'notes-list',
-    templateUrl: 'app/notes/notes-list.html'
+    templateUrl: 'app/notes/notes-list.html',
+    providers: [NotesService]
 })
-export class NotesListComponent {
+export class NotesListComponent implements OnInit {
     public notes: Note[];
     public newNoteText: string;
+    public loading: boolean;
 
-    constructor() {
+    constructor(private notesService: NotesService) {
         this.notes = [];
     }
 
-    public add = (note: Note) => {
-        this.notes.push(note);
+    ngOnInit = () => {
+        this.refresh();
     }
 
     public remove = (note: Note) => {
-
+        this.notesService.delete(note.id).subscribe();
+        this.refresh();
     }
 
     public post = () => {
         var note = new Note(this.newNoteText);
-        this.notes.push(note);
+
+        this.notesService.post(note).subscribe((note: Note) => {
+            this.notes.push(note);
+        });
         this.newNoteText = '';
+        this.refresh();
+    }
+
+    private refresh = () => {
+        this.loading = true;
+        this.notesService.get().subscribe((notes: Note[]) => {
+            this.notes = notes;
+        }, () => { this.loading = false; });
     }
 }
