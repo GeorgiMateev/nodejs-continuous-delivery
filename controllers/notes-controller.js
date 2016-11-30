@@ -15,8 +15,8 @@ module.exports = function (Note) {
           return Note.create({
             text: req.body.text
           })
-          .then(function () {
-              res.send();
+          .then(function (note) {
+              res.send(note);
           }, function (error) {
               res.status(500).send(error);
           });
@@ -24,9 +24,12 @@ module.exports = function (Note) {
     }
 
     function del(req, res, next) {
-        Note.findById(req.params.id).destroy()
+        Note.findById(req.params.id)
+            .then(function (note) {
+                return note.destroy();
+            })
             .then(function () {
-                res.send();
+                res.send('Ok');
             }, function (error) {
               res.status(500).send(error);
           });

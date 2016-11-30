@@ -21,18 +21,18 @@ export class NotesListComponent implements OnInit {
     }
 
     public remove = (note: Note) => {
-        this.notesService.delete(note.id).subscribe();
-        this.refresh();
+        this.notesService.delete(note.id).subscribe( () => {
+            this.refresh();
+        });
     }
 
     public post = () => {
         var note = new Note(this.newNoteText);
 
         this.notesService.post(note).subscribe((note: Note) => {
-            this.notes.push(note);
+            this.refresh();
         });
         this.newNoteText = '';
-        this.refresh();
     }
 
     private refresh = () => {
