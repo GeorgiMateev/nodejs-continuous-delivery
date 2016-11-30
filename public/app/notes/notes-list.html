@@ -1,0 +1,11 @@
+<ul>
+    <li *ngFor="let note of notes">
+        <p>
+            <b>{{note.createdOn | date}}</b> <span>{{note.text}}</span>
+            <button (click)="remove(note)">Remove</button>
+        </p>
+    </li>
+</ul>
+
+<textarea cols="30" rows="10" [(ngModel)]="newNoteText"></textarea>
+<button (click)="post()">Post</button>
