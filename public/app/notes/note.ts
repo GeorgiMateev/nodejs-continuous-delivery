@@ -1,10 +1,11 @@
 export class Note {
     constructor(text: string) {
         this.text = text;
-        this.createdOn = new Date();
+        this.createdAt = new Date();
     }
 
     public text:string;
-    public createdOn:Date;
+    public createdAt:Date;
+    public updatedAt:Date;
     public id: string;
 }

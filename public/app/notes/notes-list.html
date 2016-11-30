@@ -1,7 +1,7 @@
 <ul>
     <li *ngFor="let note of notes">
         <p>
-            <b>{{note.createdOn | date}}</b> <span>{{note.text}}</span>
+            <b>{{note.createdAt | date}}</b> <span>{{note.text}}</span>
             <button (click)="remove(note)">Remove</button>
         </p>
     </li>
