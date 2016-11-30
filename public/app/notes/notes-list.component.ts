@@ -16,7 +16,7 @@ export class NotesListComponent implements OnInit {
         this.notes = [];
     }
 
-    ngOnInit = () => {
+    ngOnInit() {
         this.refresh();
     }
 
@@ -39,6 +39,7 @@ export class NotesListComponent implements OnInit {
         this.loading = true;
         this.notesService.get().subscribe((notes: Note[]) => {
             this.notes = notes;
+            this.loading = false;
         }, () => { this.loading = false; });
     }
 }
